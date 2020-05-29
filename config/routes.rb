@@ -6,5 +6,4 @@ Rails.application.routes.draw do
   get '/popular', to: 'home#memes_by_popularity'
   devise_for :users
   root to: 'home#index'
-  
 end
