@@ -1,2 +1,18 @@
-<h1>Memes#show</h1>
-<p>Find me in app/views/memes/show.html.erb</p>
+<h1><%= @meme.title %></h1>
+
+<div><%= image_tag @meme.url_source %></div>
+<div>Category: <%= @meme.category.name %></div>
+<div>
+  Votes: <%= @meme.votes_count %>
+  <%= link_to 'Login to Vote!', new_user_session_path %>
+</div>
+
+<h3>Comments</h3>
+<% unless user_signed_in? %>
+  <div class="alert">Login to add a comment!</div>
+<% end %>
+
+<% @meme.comments.each do |comment| %>
+  <div><%= comment.user.username %></div>
+  <div><%= comment.body %></div>
+<% end %>
