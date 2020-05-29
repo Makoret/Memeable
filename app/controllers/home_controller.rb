@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
   def index
-    @memes = Meme.all
+    result = Meme.all
+    @memes_by_date = result.group_by { |meme| meme.created_at.to_date }
   end
 
   def memes_by_category
