@@ -1,0 +1,13 @@
+<h1>Memes</h1>
+
+<% @memes_by_category.each do |category, memes| %>
+  <h2><%= category %></h2>
+  <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1em;">
+    <% memes.each do |meme| %>
+      <div>
+        <div><%= image_tag meme.url_source %></div>
+        <p>created by: <%= meme.owner.username %></p>
+      </div>
+    <% end %>
+  </div>
+<% end %>
