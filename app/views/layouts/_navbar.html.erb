@@ -1,0 +1,24 @@
+<header>
+  <nav style="display: flex; justify-content: space-between;">
+    <div style="display: flex;">
+      <div>
+        <h1>Memeable</h1>
+      </div>
+      <ul style="display: flex; list-style: none;">
+        <li style="margin-right: 1em;">
+          <%= link_to "By category", "/category" %>
+        </li>
+        <li style="margin-right: 1em;">
+          <%= link_to "By popularity", "/popular" %>
+        </li>
+        <li style="margin-right: 1em;">Search</li>
+      </ul>
+    </div>
+    <div>
+      <p>
+        <%= link_to "Log in", new_user_session_path %>
+      </p>
+    </div>
+  </nav>
+  <hr />
+</header>
