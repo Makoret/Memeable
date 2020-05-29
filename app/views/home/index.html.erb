@@ -1,2 +1,14 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<h1>Memes</h1>
+
+<% @memes_by_date.each do |date, memes| %>
+<p><%= date %></p>
+<div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1em;">
+  <% memes.each do |meme| %>
+  <div>
+    <p><%= meme.title %></p>
+    <div><%= image_tag meme.url_source %></div>
+    <p>created by: <%= meme.owner.username %></p>
+  </div>
+  <% end %>
+</div>
+<% end %>
