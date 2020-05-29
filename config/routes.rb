@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-  get 'home/index'
+  # resources :users
+  get '/my_profile', to: 'users#show'
+  resources :memes
+  get '/category', to: 'home#memes_by_category'
+  get '/popular', to: 'home#memes_by_popularity'
   devise_for :users
   root to: 'home#index'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  
 end
