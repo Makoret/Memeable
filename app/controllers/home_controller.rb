@@ -8,6 +8,6 @@ class HomeController < ApplicationController
   end
   
   def memes_by_popularity
-    
+    @popular_memes = Meme.all.order(:votes_count)
   end
 end

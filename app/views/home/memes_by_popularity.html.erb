@@ -1,0 +1,9 @@
+<h1>Most popular memes</h1>
+<div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1em;">
+<% @popular_memes.each do | meme | %>
+  <div>
+    <img src="<%=meme.url_source%>" alt="" />
+    <p>created by: <%= meme.owner.username %></p>
+  </div>
+<% end %>
+</div>
