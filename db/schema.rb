@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_29_175049) do
+ActiveRecord::Schema.define(version: 2020_05_29_223402) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,8 +35,8 @@ ActiveRecord::Schema.define(version: 2020_05_29_175049) do
     t.string "title"
     t.string "meme_type"
     t.string "url_source"
-    t.integer "votes_count"
-    t.integer "comments_count"
+    t.integer "votes_count", default: 0
+    t.integer "comments_count", default: 0
     t.bigint "category_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -48,8 +48,8 @@ ActiveRecord::Schema.define(version: 2020_05_29_175049) do
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "email", default: "", null: false
-    t.integer "votes_count"
-    t.integer "memes_count"
+    t.integer "votes_count", default: 0
+    t.integer "memes_count", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "encrypted_password", default: "", null: false
