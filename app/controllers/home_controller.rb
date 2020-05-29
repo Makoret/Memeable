@@ -5,9 +5,9 @@ class HomeController < ApplicationController
   end
 
   def memes_by_category
-    
+    @memes_by_category = Meme.all.group_by { |meme| meme.category.name }
   end
-  
+
   def memes_by_popularity
     @popular_memes = Meme.all.order(:votes_count)
   end
