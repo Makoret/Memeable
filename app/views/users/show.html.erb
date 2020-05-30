@@ -1,0 +1,7 @@
+<h1>My profile</h1>
+<p class="user-item" >username: <%= @user.username %>  </p>
+<p class="user-item" >email: <%= @user.email %>  </p>
+<p class="user-item" ># of memes: <%= @user.memes_count %> </p>
+
+  <%= link_to "Edit", edit_user_registration_path, class: 'button' %>
+

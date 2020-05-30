@@ -1,0 +1,80 @@
+<div class="memes-show memes-show__container">
+  <h1 class="memes-show__title"><%= @meme.title %></h1>
+
+  <div class="memes-show__image">
+    <%= image_tag @meme.url_source %>
+  </div>
+
+  <div class="memes-show__metadata">
+    <div>Category:
+      <span class="memes-show__category"><%= @meme.category.name %></span>
+    </div>
+    <div>
+      Votes:
+      <span class="memes-show__category"><%= @meme.votes_count %></span>
+      <% if user_signed_in? && has_voted?(@meme) %>
+        <%=
+          button_to(
+            'Unvote!',
+            meme_vote_path(@meme, @vote),
+            method: :delete,
+            class: 'memes-show__vote-button',
+          )
+        %>
+      <% elsif user_signed_in? && !has_voted?(@meme) %>
+        <%=
+          button_to(
+            'Vote!',
+            meme_votes_path(@meme),
+            class: 'memes-show__vote-button',
+          )
+        %>
+      <% else %>
+        <%=
+          link_to(
+            'Login to vote!',
+            new_user_session_path,
+            class: 'memes-show__login-link',
+          )
+        %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="memes-show__comments">
+    <h2>Comments</h2>
+    <% if user_signed_in? %>
+      <%=
+        form_with(
+          url: meme_comments_path(@meme),
+          class: 'memes-show__comments-form',
+        ) do
+      %>
+        <%=
+          text_area_tag(
+            'comment[body]',
+            nil,
+            class: 'memes-show__textarea',
+            placeholder: 'Write a new comment here...',
+          )
+        %>
+        <%= submit_tag 'Comment!', class: 'memes-show__submit' %>
+      <% end %>
+    <% else %>
+      <%=
+        link_to(
+          'Login to add a comment!',
+          new_user_session_path,
+          class: ['memes-show__login-link', 'memes-show__login-link--margin'],
+        )
+      %>
+    <% end %>
+
+    <% @meme.comments.each do |comment| %>
+      <article class="memes-show__comment">
+        <div class="memes-show__comment-author"><%= comment.user.username %>:</div>
+        <div class="memes-show__comment-body"><%= comment.body %></div>
+      </article>
+    <% end %>
+  </div>
+</div>
