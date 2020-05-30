@@ -5,11 +5,11 @@
 <div>
   Votes: <%= @meme.votes_count %>
   <% if user_signed_in? && has_voted?(@meme) %>
-    <%= button_to 'Unvote!', meme_vote_path(@meme, @vote), method: :delete %>
+    <%= button_to 'Unvote!', meme_vote_path(@meme, @vote), method: :delete, class: 'button' %>
   <% elsif user_signed_in? && !has_voted?(@meme) %>
-    <%= button_to 'Vote!', meme_votes_path(@meme) %>
+    <%= button_to 'Vote!', meme_votes_path(@meme), class: 'button' %>
   <% else %>
-    <%= link_to 'Login to vote!', new_user_session_path %>
+    <%= link_to 'Login to vote!', new_user_session_path, class: 'button' %>
   <% end %>
 </div>
 
@@ -20,7 +20,7 @@
     <div><%= submit_tag 'New Comment' %></div>
   <% end %>
 <% else %>
-  <%= link_to 'Login to add a comment!', new_user_session_path %>
+  <%= link_to 'Login to add a comment!', new_user_session_path, class: 'button' %>
 <% end %>
 
 <% @meme.comments.each do |comment| %>
