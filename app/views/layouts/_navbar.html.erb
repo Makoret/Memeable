@@ -18,6 +18,9 @@
     </div>
     <div style="padding: 1em;">
       <% if current_user %>
+        <li style="margin-right: 1em;">
+          <%= link_to "Create meme", new_meme_path %>
+        </li>
       <span style="margin-right: 1em;"
         >Welcome, <strong><%= current_user.username %></strong>!</span
       >

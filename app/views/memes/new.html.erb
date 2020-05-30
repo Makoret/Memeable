@@ -1,2 +1,32 @@
-<h1>Memes#new</h1>
-<p>Find me in app/views/memes/new.html.erb</p>
+<h2>Sign up</h2>
+
+<%= form_for(@meme) do |f| %> 
+<ul> 
+  <% @meme.errors.full_messages.each do |error| %>
+    <li>
+      <%= error %> 
+    </li>
+  <% end %> 
+</ul>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title, autofocus: true, autocomplete: "title" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :url_source %><br />
+    <%= f.text_field :url_source, autofocus: true, autocomplete: "url_source" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :category_id %><br />
+    <%= f.collection_select :category_id, Category.all, :id, :name%>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Release meme" %>
+  </div>
+<% end %>
+
+<%# :title, :meme_type, :url_source, :votes_count, :comments_count, :category, :owner %>
