@@ -1,40 +1,33 @@
 <header>
-  <nav style="display: flex; justify-content: space-between;">
-    <div style="display: flex;">
-      <div>
-        <h1>
-          <a href="/">Memeable</a>
-        </h1>
+  <nav class="navBar">
+    <div class="sideLinks">
+      <div class="logo">
+        <a class="logo_link" href="/"> <img class="logo_link_img" src="images/memeable.png" alt="" /></a>
       </div>
-      <ul style="display: flex; list-style: none;">
-        <li style="margin-right: 1em;">
+      <ul class="links">
+        <li>
           <%= link_to "By category", "/category" %>
         </li>
-        <li style="margin-right: 1em;">
+        <li>
           <%= link_to "By popularity", "/popular" %>
         </li>
-        <li style="margin-right: 1em;">Search</li>
+        <li><a href="#">Search</li></a>
       </ul>
     </div>
-    <div style="padding: 1em;">
+    <div class="user">
       <% if current_user %>
-        <li style="margin-right: 1em;">
-          <%= link_to "Create meme", new_meme_path %>
-        </li>
-      <span style="margin-right: 1em;"
-        >Welcome, <strong><%= current_user.username %></strong>!</span
-      >
-      <span style="margin-right: 1em;"
-        ><%= link_to "My account", "/my_profile" %></span
-      >
-      <span style="margin-right: 1em;"
-        ><%= link_to 'Log out', destroy_user_session_path, method: :delete
-        %></span
-      >
-      <% else %>
-        <%= link_to 'Log in', new_user_session_path %>
-        <%= link_to 'Sign up', new_user_registration_path %>
-      <% end %>
+      <span class="user_welcome"> Welcome, <strong><%= current_user.username %></strong>! </span>
+      <li class="user_dropdown">
+        <%= link_to "Create meme", new_meme_path %>
+      </li>
+      <span class="user_dropdown">
+        <%= link_to "My account", "/my_profile" %>
+      </span>
+      <span class="user_dropdown">
+        <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
+      </span>
+      <% else %> <%= link_to 'Log in', new_user_session_path %> <%= link_to 'Sign up', new_user_registration_path %> <%
+      end %>
     </div>
   </nav>
   <hr />
