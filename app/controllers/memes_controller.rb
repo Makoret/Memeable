@@ -15,6 +15,7 @@ class MemesController < ApplicationController
 
   def show
     @meme = Meme.find(params[:id])
+    @vote = Vote.find_by(user: current_user, meme: @meme)
   end
 
   private
