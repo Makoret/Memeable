@@ -1,8 +1,8 @@
 <% @memes.each do |group_name, memes| %>
-  <h2><%= group_name %></h2>
-  <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1em;">
+  <h2 class="memes-title" ><%= group_name %></h2>
+  <div class="memes-container" >
     <% memes.each do |meme| %>
-      <div>
+      <div class="memes-card">
         <%= link_to image_tag(meme.url_source), meme_path(meme) %>
         <figcaption>created by: <%= meme.owner.username %></figcaption>
       </div>
