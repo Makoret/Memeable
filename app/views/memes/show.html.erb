@@ -4,11 +4,22 @@
 <div>Category: <%= @meme.category.name %></div>
 <div>
   Votes: <%= @meme.votes_count %>
-  <%= link_to 'Login to vote!', new_user_session_path %>
+  <% if user_signed_in? && has_voted?(@meme) %>
+    <%= button_to 'Unvote!', meme_vote_path(@meme, @vote), method: :delete %>
+  <% elsif user_signed_in? && !has_voted?(@meme) %>
+    <%= button_to 'Vote!', meme_votes_path(@meme) %>
+  <% else %>
+    <%= link_to 'Login to vote!', new_user_session_path %>
+  <% end %>
 </div>
 
 <h2>Comments</h2>
-<% unless user_signed_in? %>
+<% if user_signed_in? %>
+  <%= form_with url: meme_comments_path(@meme) do %>
+    <div><%= text_area_tag 'comment[body]' %></div>
+    <div><%= submit_tag 'New Comment' %></div>
+  <% end %>
+<% else %>
   <%= link_to 'Login to add a comment!', new_user_session_path %>
 <% end %>
 
