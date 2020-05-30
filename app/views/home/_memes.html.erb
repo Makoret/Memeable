@@ -1,0 +1,11 @@
+<% @memes.each do |group_name, memes| %>
+  <h2><%= group_name %></h2>
+  <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1em;">
+    <% memes.each do |meme| %>
+      <div>
+        <%= link_to image_tag(meme.url_source), meme_path(meme) %>
+        <figcaption>created by: <%= meme.owner.username %></figcaption>
+      </div>
+    <% end %>
+  </div>
+<% end %>
