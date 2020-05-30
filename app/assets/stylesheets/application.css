@@ -20,11 +20,48 @@ body {
 }
 
 /* franco */
+/* franco */
+
+.logo {
+  width: 100%;
+  text-align: center;
+}
+.links {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  width: 60%;
+  padding: 0px;
+  text
+}
+.links li a {
+  text-decoration: none;
+  color: black;
+}
+
+.user {
+  float: right;
+  margin-top: -35px;
+  position: relative;
+}
+.user:hover{
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  /* background-color: black; */
+}
+.user:hover .user_dropdown{
+  display: block;
+}
+.user:hover .user_dropdown a{
+  text-decoration: none;
+}
+.user_dropdown {
+  display: none;
+  margin: 5px auto;
+  text-align: center;
+}
 
 @media (min-width: 768px) {
   .container {
     width: 80%;
   }
-
-  /* franco */
 }
